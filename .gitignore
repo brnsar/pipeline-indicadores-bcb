@@ -1,0 +1,19 @@
+# Dados gerados pelo pipeline
+lake/
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+
+# Editores
+.vscode/
+.idea/

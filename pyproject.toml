@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bcb-pipeline"
+version = "1.0.0"
+description = "Pipeline de indicadores do Banco Central (dólar, Selic e IPCA) com PySpark e Delta Lake"
+authors = [{ name = "Bruna Soares", email = "brnsar6@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "pyspark==3.5.3",
+    "delta-spark==3.2.1",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+bcb-pipeline = "bcb_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
