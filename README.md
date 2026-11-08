@@ -100,6 +100,14 @@ bcb-pipeline --series dolar --inicio 2024-01-01 --fim 2024-06-30
 | `--mostrar` | Exibe os últimos 12 meses da camada ouro |
 | `-v` | Logs detalhados |
 
+### Exemplo de execução
+
+Carga inicial com dados reais desde 2015 (`bcb-pipeline --inicio 2015-01-01 --mostrar`), executada em novembro de 2026:
+
+![Saída do pipeline com os últimos 12 meses da camada ouro](docs/exemplo-execucao.png)
+
+Foram extraídos 2.972 registros do dólar, 4.330 da Selic e 142 do IPCA, sem nenhum rejeitado. O resultado são 7.443 linhas na camada prata e 143 meses na ouro. O IPCA dos dois últimos meses aparece como `NULL` porque o IBGE ainda não o havia divulgado: na próxima execução incremental, esses meses são preenchidos.
+
 ### Consultando os dados
 
 ```python
