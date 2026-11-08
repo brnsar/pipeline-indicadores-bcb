@@ -34,7 +34,8 @@ def test_cargas_inicial_e_incremental(spark, delta_disponivel, tmp_path):
     assert len(ouro) == 12
     assert ouro[date(2023, 12, 1)]["ipca_12m"] == pytest.approx(4.62, abs=0.005)
 
-    # --- O BCB corrige um valor já carregado
+    # --- O BCB remove o registro inválido e corrige um valor já carregado
+    dados[1].pop()
     dezembro = next(r for r in dados[1] if r["data"] == "29/12/2023")
     dezembro["valor"] = "4.8413"
 
